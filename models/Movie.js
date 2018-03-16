@@ -16,14 +16,12 @@ module.exports.getAll = () => {
 
 module.exports.getOneMovie = (id) =>{
   return new Promise((resolve, reject)=>{
-    console.log('im here', id);
     db.get(`SELECT movies.*, directors.name AS director
     FROM movies
     JOIN directors ON director_id = directors.dir_id
     WHERE movie_id ="${id}"`,
     (err, movie)=>{
       if(err) return reject(err);
-      console.log(movie, 'movie');
       resolve(movie);
     });
   });
